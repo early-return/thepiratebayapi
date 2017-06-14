@@ -88,7 +88,12 @@ public class ApiController {
         TorrentDetailResponse response = new TorrentDetailResponse();
         try {
             TorrentDetail detail = spider.detail(code);
-            response.setError(false);
+            if(detail != null) {
+                response.setError(false);
+            } else {
+                response.setError(true);
+                response.setErrorMessage("种子编码不存在!");
+            }
             response.setDetail(detail);
         } catch (IOException ioe) {
             response.setError(true);

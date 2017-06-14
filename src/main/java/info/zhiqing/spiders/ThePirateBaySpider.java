@@ -84,14 +84,23 @@ public class ThePirateBaySpider {
                 .url(url)
                 .build();
         Response response = client.newCall(request).execute();
-        String body = response.body().string();
+        String body = "";
+        if(response.code() == 200) {
+            body = response.body().string();
+        }
         response.close();
         return body;
     }
 
     //通过页面字符串提取种子信息
     private List<Torrent> collectTorrents(String body) throws IOException {
+        List<Torrent> torrents = new ArrayList<>();
+
         Document doc = Jsoup.parse(body);
+
+        if(doc.getElementsByTag("table").size() < 1) {
+            return torrents;
+        }
 
         //获取搜索结果表格
         Element result = doc.getElementById("searchResult");
@@ -101,8 +110,6 @@ public class ThePirateBaySpider {
 
         //获取每一行
         Elements rows = resultBody.getElementsByTag("tr");
-
-        List<Torrent> torrents = new ArrayList<>();
 
         //遍历每一行
         for(Element ele :  rows) {
@@ -198,6 +205,11 @@ public class ThePirateBaySpider {
 
         //获取种子信息
         Document doc = Jsoup.parse(body);
+
+        if(doc.select("dl").size() < 1) {
+            return null;
+        }
+
         Elements dtEles = doc.getElementsByTag("dt");
         Elements ddEles = doc.getElementsByTag("dd");
         if(dtEles.size() == ddEles.size()) {
