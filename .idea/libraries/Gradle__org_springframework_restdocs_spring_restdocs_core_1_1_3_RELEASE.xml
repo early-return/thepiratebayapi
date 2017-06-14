@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.springframework.restdocs:spring-restdocs-core:1.1.3.RELEASE">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.restdocs/spring-restdocs-core/1.1.3.RELEASE/aa6c3751d3d1b897172e9978865a558c69d7a3a9/spring-restdocs-core-1.1.3.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.restdocs/spring-restdocs-core/1.1.3.RELEASE/b7f2cbe5a1deb2b86d532c2ac479d6c51c45b38a/spring-restdocs-core-1.1.3.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
